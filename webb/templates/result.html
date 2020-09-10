@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes"/>
+
+<style>
+body {
+    margin: 0;
+    padding: 0; 
+    background-color: #3b0a7a;  
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.flip-box {
+  background-color: transparent;
+  width: 380px;
+  height: 400px;
+  position: absolute;
+  top: 60%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+  border: 1px solid white;
+  perspective: 1000px;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateX(180deg);
+}
+
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+}
+
+.flip-box-front {
+  background-color: #bbb;
+  color: black;
+  
+}
+
+.flip-box-back {
+  background-color: dodgerblue;
+  color: black;
+  transform: rotateX(180deg);
+}
+@media screen and (max-width:460px) {
+  .flip-box{
+    top:80%;
+  }
+}
+  @media screen and (max-width:350px) {
+  .flip-box{
+    top:83%;
+  }
+  }
+  @media screen and (max-height: 547px) {
+  .flip-box{
+    top:78%;
+    left: 100%;
+  }
+  }
+  
+  @media screen and (max-height: 500px){
+    .flip-box{
+     display: none;
+    }
+  }
+
+</style>
+</head>
+<body>
+ 
+  
+  
+<div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <h2>WORD</h2>
+      {%if word == ""%}
+      <p>Enter a valid input</p>
+      {%else%}
+    
+      <p style="text-transform: uppercase;"> {{ word }}</p>
+      {% endif %}
+    </div>
+    <div class="flip-box-back">
+      <h2>MEANING</h2>
+    {%if word == ""%}
+    <img src="https://media.giphy.com/media/OPf7jxNHovIF9yOlsI/giphy.gif" height="300" width="300"></img>
+    {%else%}
+    <ol>
+    {% for item in result %} 
+    <p  style="text-align:left;"> {{ item }}</p> 
+    {% endfor %}
+    </ol>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

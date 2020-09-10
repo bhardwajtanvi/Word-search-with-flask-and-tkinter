@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js">
+    </script>
+
+    <title>Tanvi's first flask app</title>   
+    <meta charset="utf-8">    
+  </head>
+  <style>
+    body{
+    margin: 0;
+    padding: 0; 
+    background-color: #3b0a7a;  
+
+}
+
+
+.search-box{
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    background-color: #448794;
+    height: 40px;
+    border-radius: 45%;
+    padding: 10px;
+}
+.search-box:hover > .search-txt{
+  width: 100px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn{
+  background:white;
+ 
+}
+
+.search-btn{
+  color: #3b0a7a;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #448794;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.search-txt{
+  border:none;
+  background: none;
+  outline: none;
+  float:left;
+  padding: 0%;
+  color: #0d0d0d;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width:0px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:  #3b0a7a;
+  color: white;
+  text-align:center;
+}
+
+a {
+  color:white;
+}
+
+@media screen and (max-height: 500px){
+    .footer{
+     display: none;
+    }
+  }
+
+  </style>
+  <body >
+    <h1 style="font-size:60px;">WORD SEARCH</h1>
+    <form action="result.html" method="POST">
+    <div class="search-box">
+      
+      <input class="search-txt" type="text" name="word"   placeholder="Enter a word" value="">
+      <button class="search-btn" type="submit" value="">     
+      <i class="fas fa-search"></i> 
+      </button> 
+    
+     </div>     
+    </form>
+    <div class="footer">
+      <p>Posted by :Tanvi Bhardwaj <a href="mailto:tanvibhardwaj37@gmail.com">tanvibhardwaj37@gmail.com</a></p>
+      
+    </div>
+
+    {%include 'result.html'%}
+
+    
+  </body>
+</html>
+{% endblock %}
+
